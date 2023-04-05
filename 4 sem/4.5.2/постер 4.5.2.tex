@@ -1,0 +1,171 @@
+
+\documentclass[a0paper,portrait]{baposter}
+\usepackage[russian]{babel}
+\usepackage{relsize}		% For \smaller
+\usepackage{url}
+\usepackage[russian]{babel}% For \url
+% \usepackage{epstopdf}	% Included EPS files automatically converted to PDF to include with pdflatex
+
+%%% Global Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\graphicspath{{pix/}}	% Root directory of the pictures 
+% \tracingstats=2			% Enabled LaTeX logging with conditionals
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{bordercol}{RGB}{40,40,40}
+\definecolor{headercol1}{RGB}{186,215,230}
+\definecolor{headercol2}{RGB}{80,80,80}
+\definecolor{headerfontcol}{RGB}{0,0,0}
+\definecolor{boxcolor}{RGB}{186,215,230}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Utility functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document Start %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\typeout{Poster rendering started}
+
+%%% Setting Background Image %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\background{
+	\begin{tikzpicture}[remember picture,overlay]%
+	\draw (current page.north west)+(-2em,2em) node[anchor=north west]
+	{\includegraphics[height=1.1\textheight]{background}};
+	\end{tikzpicture}
+}
+
+%%% General Poster Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Eye Catcher, Title, Authors and University Images %%%%%%%%%%%%%%%%%%%%%%
+\begin{poster}{
+	grid=false,
+	% Option is left on true though the eyecatcher is not used. The reason is
+	% that we have a bit nicer looking title and author formatting in the headercol
+	% this way
+	%eyecatcher=false, 
+	borderColor=bordercol,
+	headerColorOne=headercol1,
+	headerColorTwo=headercol2,
+	headerFontColor=headerfontcol,
+	% Only simple background color used, no shading, so boxColorTwo isn't necessary
+	boxColorOne=boxcolor,
+	headershape=roundedright,
+	headerfont=\Large\sf\bf,
+	textborder=rectangle,
+	background=user,
+	headerborder=open,
+  boxshade=plain
+}
+%%% Eye Cacther %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	Eye Catcher, empty if option eyecatcher=false - unused
+}
+%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{\sf\bf
+	Двойное лучепреломление
+}
+%%% Authors %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+	\vspace{1em} Царук В В\\
+}
+%%% Logo %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+% The logos are compressed a bit into a simple box to make them smaller on the result
+% (Wasn't able to find any bigger of them.)
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt}
+	\fbox{
+		\begin{minipage}{14em}
+		\includegraphics[width=10em,height=4em]{LOGO2.jpg}
+			\includegraphics[width=4em,height=4em]{LOGO5.png}
+		\end{minipage}
+	}
+}
+
+\headerbox{Цель работы}{name=1,column=0,row=0}{
+Изучение зависимости показателя преломления необыкновенной волны от направления в двоякопреломляющем кристалле; определение главных показателей преломления $n_0$ --- обыкновенной и $n_e$ --- необыкновенной волны в кристалле наблюдение эффекта полного внутреннего отражения.
+}
+\headerbox{Приборы и материалы}{name=definitions,column=0,below=1}{
+    В работе используються:Гелий-неоновый лазер, вращающийся столик с неподвижным лимбом, призма из исландского шпата, поляроид.
+}
+
+\headerbox{Эксп. установка и теория}{name=models,column=0,below=definitions}{
+\begin{center}
+\includegraphics[width=1\textwidth]{scheampaint.png}
+\end{center}
+Схема эксперементальной установки довольно проста поэтому кроме рисунка выше для понимания не надо,сложность заключаеться в теории которая очень объемна,поэтому приведем главную выдержку из нее .
+Рассмотрим,как определить показатели преломления для обыкновенной и необыкновенной волны. В работе исследуется призма из исландского шпата.
+в плоскости, параллельной верхней грани призмы, причем она параллельна входной грани призмы (длинному катету). При этом в обыкновенной волне вектор $\vec D_o$ пендикулярен верхней грани призмы, а в необыкновенной волне вектор $\vec D_e$  параллелен верхней грани.
+Волну, падающую на входную грань призмы, можно представить в виде суммы двух ортогональных линейно поляризованных волн. Преломление этих двух волн на грани призмы можно рассматривать независимо. Волна, в которой вектор $\vec D$ направлен вертикально, внутри кристалла будет распространяться как обыкновенная. Для этой волны выполняется закон Снеллиуса, а показатель преломления призмы для нее равен $n_o$. Волна, в которой вектор $\vec D$ направлен горизонтально, в кристалле будет распространяться как необыкновенная. Для этой волны также будет выполняться закон Снеллиуса, но с тем отличием, что показатель преломления призмы для нее будет зависеть от угла между осью кристалла и волновой нормалью.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{prismpaint.png}
+\end{center}
+}
+
+
+\headerbox{Эксп. установка и теория}{name=density,span=2,column=1}
+{
+Значение показателя преломления и угол, под которым преломилась волна в призме, можно найти, измерив угол падения на входную грань призмы $\phi_1$ и угол $\phi_2$ на выходе призмы . Запишем закон Снеллиуса для одной из волн применительно к первой и второй граням призмы:
+\[
+	\sin \phi = n \sin \beta_1;
+\]
+\[
+	\sin \phi_2 = n \sin \beta_2 = n \sin (A - \beta_1).
+\]
+При этом мы выразили угол падения на вторую грань призмы $\beta_2$ через угол преломления на первой грани призмы $\beta_1$ и угол при вершине призмы $A$. Как видно из рисунка, эти углы связаны простым соотношением $A = \beta_1 + \beta_2$. Учитывая, что угол преломления $\beta_1$ связан с углом $\theta$ между осью кристалла и волновой нормалью $\vec N$ соотношением $\theta + \beta_1 = \pi / 2$, находим $n$ и $\theta$:
+\begin{equation}
+n = \frac{1}{\sin A} \sqrt{\sin^2 \varphi_1 + \sin^2 \varphi_2 + 2 \sin \varphi_1 \sin \varphi_2 \cos A};
+\end{equation}
+\[
+	\cos \theta = \frac{\sin \varphi_1}{n}.
+\]
+Для обыкновенной волны $n$ не будет зависеть от угла $\theta$, а для необыкновенной волны зависимость $n$ от $\theta$ должна описываться выражением (7).
+
+Показатель преломления призмы из изотропного материала удобно находить по углу нименьшего отклонения луча от первоначального направления. Угол отклонения луча призмой (см рисунок) минимален для симметричного хода лучей, то есть когда $\varphi_1 = \varphi_2$. Тогда показатель преломления можно рассчитать по формуле
+\begin{equation}
+n=\frac{\sin \left(\frac{\psi_{m}+A}{2}\right)}{\sin \left(\frac{A}{2}\right)},
+\end{equation}
+где $\psi_m$ --- угол наименьшего отклонения.
+
+Если призма неизотропна, то этой формулой, строго говоря, можно воспользоваться только для обыкновенной волны, которая, как это было показано ранее, распространяется так же, как и в изотропной среде. Но если учесть, что угол при вершине призмы мал, и при угле наименьшего отклонения преломлённый луч в призме распространяется под углом к оси кристалла близким к $\pi / 2$, то в качестве оценки формулу (2) можно использовать для определения $n_e$.
+}
+
+\headerbox{Данные и их обработка}{name=degreeDistribution,span=2,column=1,below=density}{
+Данные можно найти по qr коду (ссылка на гугл таблицу).
+\begin{center}
+\includegraphics[width=1\textwidth]{graphprism.png}
+\end{center}
+Расчёт показателей преломления на основании трёх экспериментов:
+Расчёт по обыкновенной и необыкновенной волне:
+\[
+	\text{При} \ A = 37^o \quad n_o = 1.65 \pm 0.01; \quad n_e = 1.49 \pm 0.03;
+\] 
+Расчёт по углу наименьшего отклонения:
+\[
+\varphi_o^m = 26.1 \pm 1; \quad \psi_e^m = 20 \pm 1.
+\]
+\[
+	\text{При}\ A = 37^o \quad n_o = 1.64 \pm 0.003; \quad n_e = 1.50 \pm 0.04;
+\]
+Расчёт по углу поного внутреннего отражения:
+\[
+	\phi_o = (1 \pm 3)^o; \quad \phi_e = (-6.5 \pm 3)^o;
+\]
+\[
+	n_o = 1.69 \pm 0.03; \quad n_e = 1.52 \pm 0.03.
+\]
+Вывод: Значения совпадают с теоретическими с учетом погрешности(ценой 3 раз перемеренных измерений)
+
+}
+
+\end{poster}
+  \end{document}
